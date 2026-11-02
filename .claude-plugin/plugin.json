@@ -1,0 +1,36 @@
+{
+  "name": "temps-projet",
+  "version": "0.1.0",
+  "description": "Affiche au-dessus du champ de saisie le temps passé sur le projet, converti en journées de travail, et les tokens de la conversation.",
+  "userConfig": {
+    "journee": {
+      "type": "number",
+      "title": "Durée d'une journée",
+      "description": "En heures. C'est l'unité dans laquelle le temps s'affiche : le compteur mesure des heures, il les montre en journées de travail.",
+      "default": 8
+    },
+    "inactivite": {
+      "type": "number",
+      "title": "Seuil d'inactivité",
+      "description": "En minutes. Au-delà de cet écart entre deux messages, le temps ne compte plus : vous étiez parti, et le compteur reprend à votre message de retour.",
+      "default": 15
+    },
+    "langue": {
+      "type": "string",
+      "title": "Langue",
+      "description": "La langue de la ligne affichée et du relevé.",
+      "default": "fr",
+      "options": [
+        "fr",
+        "en"
+      ]
+    },
+    "groupes": {
+      "type": "string",
+      "title": "Projets groupés",
+      "description": "Plusieurs dossiers de conversation sous un même nom de projet, pour un projet renommé ou deux conversations ouvertes sur le même travail. Des paires dossier=Nom séparées par des points-virgules, le dossier étant le chemin du projet aplati : -Users-moi-Documents-Chose=Chose; -Users-moi-Documents-Vieux-Nom=Chose",
+      "default": ""
+    }
+  },
+  "license": "MIT"
+}

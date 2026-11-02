@@ -1,0 +1,5 @@
+{
+  "name": "temps-projet",
+  "owner": { "name": "zerpo-lab" },
+  "plugins": [{ "name": "temps-projet", "source": "./" }]
+}
