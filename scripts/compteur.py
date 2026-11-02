@@ -204,8 +204,14 @@ MANUEL = os.path.join(CONFIG, 'temps-manuel.tsv')
 DEBUT, FIN = '<!-- compteur: debut -->', '<!-- compteur: fin -->'
 
 # Le chemin de la maison, aplati comme Claude Code aplatit les chemins de
-# projet : c'est ce qu'on retire d'un nom de dossier pour l'afficher.
-PREFIXE_MAISON = os.path.expanduser('~').replace(os.sep, '-') + '-'
+# projet : c'est ce qu'on retire d'un nom de dossier pour l'afficher. Les
+# deux-points de la lettre de lecteur passent aussi, sinon rien ne correspond
+# sous Windows et le projet s'affiche sous son chemin entier.
+def aplati(chemin):
+    return chemin.replace(os.sep, '-').replace('/', '-').replace(':', '-')
+
+
+PREFIXE_MAISON = aplati(os.path.expanduser('~')) + '-'
 
 
 # ---------------------------------------------------------------- la lecture
@@ -225,8 +231,10 @@ def groupe(dossier):
     if dossier in GROUPES:
         return GROUPES[dossier]
     nom = dossier
-    if nom.startswith(PREFIXE_MAISON):
-        nom = nom[len(PREFIXE_MAISON):]
+    for prefixe in (PREFIXE_MAISON, aplati(PREFIXE_MAISON).lstrip('-')):
+        if nom.startswith(prefixe):
+            nom = nom[len(prefixe):]
+            break
     nom = nom.replace('-', ' ').strip()
     return ('…' + nom[-33:]) if len(nom) > 34 else nom
 
