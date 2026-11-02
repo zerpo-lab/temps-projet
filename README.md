@@ -156,3 +156,26 @@ Dans l'app desktop, où `/plugin` ne s'exécute pas : le `+` à côté du champ 
 saisie, puis Plugins, Add marketplace, puis Add plugin. Depuis un dossier local,
 `claude plugin install temps-projet --marketplace <chemin du dossier>` suffit, et
 le mod reste alors relu depuis ce dossier à chaque `/reload-plugins`.
+
+## Désinstaller
+
+```
+/plugin uninstall temps-projet
+```
+
+Le mod s'en va, **ses fichiers restent**, dans le dossier de configuration de
+Claude Code (`~/.claude`, ou ce que nomme `CLAUDE_CONFIG_DIR`) :
+
+| Fichier | Ce qu'il contient |
+| --- | --- |
+| `statusline-temps-cache.json` | Le temps compté par session. C'est la seule copie : les transcripts d'où il vient sont effacés après 30 jours. |
+| `temps-projets.md` | Le relevé lisible, par projet. |
+| `temps-projets-journal.tsv` | L'historique daté, une ligne par jour et par projet. |
+| `temps-manuel.tsv` | Les journées saisies à la main, hors Claude. |
+
+Ils ne portent pas le nom du mod, ce qui est un défaut : ils datent d'une époque
+où le compteur était un script isolé, et les renommer effacerait le temps déjà
+compté chez ceux qui s'en servent. Si vous désinstallez pour de bon, ce sont ces
+quatre-là qu'il faut supprimer. **Le premier est irremplaçable** : une fois
+effacé, aucun amorçage ne peut récupérer ce que les transcripts ne contiennent
+plus.
