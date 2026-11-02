@@ -117,8 +117,15 @@ chemins comptent pareil.
 
 Python 3, déjà présent sur macOS et sur toute distribution Linux courante. Le
 mod cherche `/usr/bin/python3`, puis Homebrew, puis `python3` et `python` dans
-le PATH — sur Windows, c'est ce dernier nom qui répond en général. Aucune
-dépendance, aucun accès au réseau, rien qui sorte de votre machine.
+le PATH. Aucune dépendance, aucun accès au réseau, rien qui sorte de votre
+machine.
+
+**Sur Windows, Python n'est pas livré avec le système** : installez-le depuis
+python.org ou le Microsoft Store, en cochant « Add to PATH », sinon le mod ne
+trouve rien et reste silencieux — il ne dit pas pourquoi, il se tait. Le reste
+du mod est écrit pour Windows mais n'y a pas été essayé : si le nom d'un projet
+s'affiche sous son chemin entier au lieu de son nom court, c'est là qu'il faut
+regarder.
 
 ## D'où part le compte
 
