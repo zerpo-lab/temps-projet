@@ -51,6 +51,15 @@ const calcule = async ($: EngineInterface, env: Record<string, string>) => {
       // Un compteur n'a aucune raison d'interrompre une session.
     }
   }
+  // Aucun interpréteur n'a répondu. Se taire ferait une énigme : sur Windows,
+  // Python n'est pas livré avec le système, et c'est la panne la plus probable
+  // d'une première installation. On le dit là où la personne regarde.
+  if (python === null && ligne === null) {
+    ligne = 'temps-projet · Python 3 introuvable · voir le README du mod'
+    $.ui.invalidate('ui.render')
+
+    return
+  }
   python = null                 // celui qui marchait ne marche plus : on cherchera à nouveau
 }
 
