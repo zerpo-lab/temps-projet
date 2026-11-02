@@ -116,8 +116,26 @@ chemins comptent pareil.
 ## Ce qu'il lui faut
 
 Python 3, déjà présent sur macOS et sur toute distribution Linux courante. Le
-mod cherche `/usr/bin/python3`, puis Homebrew, puis `python3` dans le PATH.
-Aucune dépendance, aucun accès au réseau, rien qui sorte de votre machine.
+mod cherche `/usr/bin/python3`, puis Homebrew, puis `python3` et `python` dans
+le PATH — sur Windows, c'est ce dernier nom qui répond en général. Aucune
+dépendance, aucun accès au réseau, rien qui sorte de votre machine.
+
+## D'où part le compte
+
+**Par défaut, de votre installation.** Chaque conversation commence à zéro et
+son temps s'accumule à partir de là.
+
+Pour récupérer ce que vous avez déjà fait, lancez l'amorçage une fois :
+
+```
+python3 <dossier du mod>/scripts/compteur.py --amorcer
+```
+
+Il relit tous les transcripts encore présents et reconstitue le relevé. Ce qu'il
+peut récupérer a une limite qui n'est pas la sienne : **Claude Code efface les
+transcripts après 30 jours** (réglage `cleanupPeriodDays`, `0` pour ne jamais
+nettoyer). Au-delà, il n'y a plus rien à lire — d'où le cache, qui garde les
+totaux une fois comptés même quand leur transcript a disparu.
 
 ## Installation
 

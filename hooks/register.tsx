@@ -21,8 +21,9 @@ const COMPTEUR = 'scripts/compteur.py'
 // en dernier recours. Le premier qui répond est retenu pour la session : on
 // essaie en lançant, plutôt qu'en interrogeant le disque, pour que l'ordre
 // décide seul et qu'aucun refus de lecture ne fasse taire le compteur.
+// `python` en tout dernier : c'est le nom qui répond sur Windows.
 const PYTHONS = ['/usr/bin/python3', '/opt/homebrew/bin/python3',
-                 '/usr/local/bin/python3', 'python3']
+                 '/usr/local/bin/python3', 'python3', 'python']
 
 let ligne: string | null = null
 let python: string | null = null
